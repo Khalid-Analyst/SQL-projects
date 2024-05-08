@@ -51,11 +51,12 @@ FROM (
 GROUP BY 
 	AgeGroup;
 
---Question 5: Are there any specific weather conditions that contribute to severe accidents?
+--Question 5: What are the top 2   specific weather conditions that contribute to severe accidents?
 DECLARE @Sevierity varchar(100)
 SET @Sevierity = 'Fatal' --Serious, Fatal, Slight
 
 SELECT 
+	TOP 2
 	[WeatherConditions],
 	COUNT([Severity]) AS 'Total Accident'
 FROM 
