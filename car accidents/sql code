@@ -1,0 +1,68 @@
+--Question 1: How many accidents have occurred in urban areas versus rural areas?
+SELECT
+	[Area],
+	COUNT([AccidentIndex]) AS 'Total Accident'
+FROM 
+	[dbo].[accident]
+GROUP BY 
+	[Area];
+
+--Question 2: Which day of the week has the highest number of accidents?
+SELECT 
+	[Day],
+	COUNT([AccidentIndex]) 'Total Accident'
+FROM 
+	[dbo].[accident]
+GROUP BY 
+	[Day]
+ORDER BY 
+	'Total Accident' DESC;
+
+--Question 3: What is the average age of vehicles involved in accidents based on their type?
+SELECT 
+	[VehicleType], 
+	COUNT([AccidentIndex]) AS 'Total Accident', 
+	AVG([AgeVehicle]) AS 'Average Age'
+FROM 
+	[dbo].[vehicle]
+WHERE 
+	[AgeVehicle] IS NOT NULL
+GROUP BY 
+	[VehicleType]
+ORDER BY 
+	'Total Accident' DESC;
+
+--Question 4: Can we identify any trends in accidents based on the age of vehicles involved?
+SELECT 
+	AgeGroup,
+	COUNT([AccidentIndex]) AS 'Total Accident',
+	AVG([AgeVehicle]) AS 'Average Year'
+FROM (
+	SELECT
+		[AccidentIndex],
+		[AgeVehicle],
+		CASE
+			WHEN [AgeVehicle] BETWEEN 0 AND 5 THEN 'New'
+			WHEN [AgeVehicle] BETWEEN 6 AND 10 THEN 'Regular'
+			ELSE 'Old'
+		END AS AgeGroup
+	FROM [dbo].[vehicle]
+) AS SubQuery
+GROUP BY 
+	AgeGroup;
+
+--Question 5: Are there any specific weather conditions that contribute to severe accidents?
+DECLARE @Sevierity varchar(100)
+SET @Sevierity = 'Fatal' --Serious, Fatal, Slight
+
+SELECT 
+	[WeatherConditions],
+	COUNT([Severity]) AS 'Total Accident'
+FROM 
+	[dbo].[accident]
+WHERE 
+	[Severity] = @Sevierity
+GROUP BY 
+	[WeatherConditions]
+ORDER BY 
+	'Total Accident' DESC;
