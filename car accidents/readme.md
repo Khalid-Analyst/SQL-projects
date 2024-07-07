@@ -2,7 +2,8 @@
 This project is an exploratory data analysis (EDA) of car accident data sourced from two CSV files. The dataset includes information on accidents and vehicles involved.
 
 ##  Report
-[View Full Report](car%20accidents%20Report.pdf)
+![Car Accidents Report Screenshot](https://github.com/Khalid-Analyst/SQL-projects/assets/145170346/223278dd-0241-4877-8f08-9bcf00b712f0)
+
 
 ## Data Source
 The data is sourced from two CSV files:
