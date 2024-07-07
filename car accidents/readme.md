@@ -2,7 +2,7 @@
 This project is an exploratory data analysis (EDA) of car accident data sourced from two CSV files. The dataset includes information on accidents and vehicles involved.
 
 ##  Report
-[Car Accidents Analysis Report](car accidents/car accidents Report.pdf)
+[View Full Report](car%20accidents%20Report.pdf)
 
 ## Data Source
 The data is sourced from two CSV files:
